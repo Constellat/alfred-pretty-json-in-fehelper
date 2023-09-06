@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.zyong.me.json</string>
+	<key>connections</key>
+	<dict>
+		<key>3AC219EE-D89F-48DE-8DC8-FEB12EBA062F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9108FE5B-3290-48F2-A0A2-A0D0F36077D4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>zhangyong</string>
+	<key>description</key>
+	<string>在 Chrome 的 FeHelper 中显示 Json</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>My Json In FeHelper</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/Users/niujianyu/Desktop/Develop/mai/venv3/bin/python pattern.py "Microsoft Edge" "chrome-extension://feolnkbgcbjmamimpfcnklggdcbgakhe/json-format/index.html"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9108FE5B-3290-48F2-A0A2-A0D0F36077D4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>json</string>
+				<key>subtext</key>
+				<string>在 Chrome 的 FeHelper 中显示 json 2</string>
+				<key>text</key>
+				<string>Pretty Json In FeHelper 2</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>3AC219EE-D89F-48DE-8DC8-FEB12EBA062F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Keywords are one of Alfred's most commonly used and most useful ways of launching actions. Set a keyword and connect it to the action(s) you want to perform.
+
+Type your keyword into Alfred, followed by your input text if needed, and you'll be on your way to boosting your productivity!</string>
+	<key>uidata</key>
+	<dict>
+		<key>3AC219EE-D89F-48DE-8DC8-FEB12EBA062F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>115</integer>
+			<key>ypos</key>
+			<integer>300</integer>
+		</dict>
+		<key>9108FE5B-3290-48F2-A0A2-A0D0F36077D4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>440</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/lslz627/alfred-pretty-json-in-fehelper</string>
+</dict>
+</plist>

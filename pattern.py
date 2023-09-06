@@ -20,7 +20,7 @@ jsonUrl = arg2
 #out = proc.communicate(script)[0]
 
 out_string = pyperclip.paste()
-re.sub('None(?=(\s*[,}]))', '"None"', out_string)
+out_string = re.sub('None(?=(\s*[,}]))', '"None"', out_string)
 print(out_string)
 out_string = str(out_string)
 

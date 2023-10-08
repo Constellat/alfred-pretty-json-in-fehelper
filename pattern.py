@@ -22,13 +22,25 @@ jsonUrl = arg2
 # 获取当前剪贴板内容
 out_string = pyperclip.paste()
 
-# 处理常见的Python内属性 如： None False True
+# 处理常见的Python内属性 如: None False True
 out_string = re.sub('(?<=:)None(?=(\s*[,}]))', '"None"', out_string)
 out_string = re.sub('(?<=:\s)None(?=(\s*[,}]))', '"None"', out_string)
 out_string = re.sub('(?<=:)False(?=(\s*[,}]))', '"False"', out_string)
 out_string = re.sub('(?<=:\s)False(?=(\s*[,}]))', '"False"', out_string)
 out_string = re.sub('(?<=:)True(?=(\s*[,}]))', '"True"', out_string)
 out_string = re.sub('(?<=:\s)True(?=(\s*[,}]))', '"True"', out_string)
+# 处理时间常见的datetime
+datetime_pattern_list = re.findall('(?<=:\s)datetime\.datetime\(([\d, ]*)\)(?=(\s*[,}]))', out_string)
+for _datetime_pattern, _ in datetime_pattern_list:
+    datetime_list = _datetime_pattern.split(', ')
+    date_list = list(map(lambda _: str(_) if int(_) > 10 else '0'+str(_), datetime_list[0:3]))
+    date_str = '-'.join(date_list)
+    time_list = list(map(lambda _: str(_) if int(_) > 10 else '0' + str(_), datetime_list[3:]))
+    time_str = ':'.join(time_list)
+    datetime_str = '"' + date_str + " " + time_str + '"'
+    out_string = re.sub(f'(?<=:\s)datetime\.datetime\({_datetime_pattern}\)(?=(\s*[,' + '}]))',
+                        datetime_str,
+                        out_string)
 
 # 处理csv数据为数组， 1\n2\n3 变为 [1,2,3]
 is_list = True

@@ -33,9 +33,9 @@ out_string = re.sub('(?<=:\s)True(?=(\s*[,}]))', '"True"', out_string)
 datetime_pattern_list = re.findall('(?<=:\s)datetime\.datetime\(([\d, ]*)\)(?=(\s*[,}]))', out_string)
 for _datetime_pattern, _ in datetime_pattern_list:
     datetime_list = _datetime_pattern.split(', ')
-    date_list = list(map(lambda _: str(_) if int(_) > 10 else '0' + str(_), datetime_list[0:3]))
+    date_list = list(map(lambda _: str(_) if int(_) > 9 else '0' + str(_), datetime_list[0:3]))
     date_str = '-'.join(date_list)
-    time_list = list(map(lambda _: str(_) if int(_) > 10 else '0' + str(_), datetime_list[3:]))
+    time_list = list(map(lambda _: str(_) if int(_) > 9 else '0' + str(_), datetime_list[3:]))
     time_str = ':'.join(time_list)
     datetime_str = '"' + date_str + " " + time_str + '"'
     out_string = re.sub(f'(?<=:\s)datetime\.datetime\({_datetime_pattern}\)(?=(\s*[,' + '}]))',

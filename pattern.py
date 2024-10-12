@@ -15,9 +15,9 @@ application = arg1
 jsonUrl = arg2
 
 ## 实现复制当前选中或者复制的
-#script = "set the clipboard to selection"
-#proc = Popen(['osascript', '-'], stdin=PIPE, stdout=PIPE, universal_newlines=True)
-#out = proc.communicate(script)[0]
+# script = "set the clipboard to selection"
+# proc = Popen(['osascript', '-'], stdin=PIPE, stdout=PIPE, universal_newlines=True)
+# out = proc.communicate(script)[0]
 
 # 获取当前剪贴板内容
 out_string = pyperclip.paste()
@@ -33,7 +33,7 @@ out_string = re.sub('(?<=:\s)True(?=(\s*[,}]))', '"True"', out_string)
 datetime_pattern_list = re.findall('(?<=:\s)datetime\.datetime\(([\d, ]*)\)(?=(\s*[,}]))', out_string)
 for _datetime_pattern, _ in datetime_pattern_list:
     datetime_list = _datetime_pattern.split(', ')
-    date_list = list(map(lambda _: str(_) if int(_) > 10 else '0'+str(_), datetime_list[0:3]))
+    date_list = list(map(lambda _: str(_) if int(_) > 10 else '0' + str(_), datetime_list[0:3]))
     date_str = '-'.join(date_list)
     time_list = list(map(lambda _: str(_) if int(_) > 10 else '0' + str(_), datetime_list[3:]))
     time_str = ':'.join(time_list)
@@ -86,4 +86,3 @@ end tell
 # print(script)
 proc = Popen(['osascript', '-'], stdin=PIPE, stdout=PIPE, universal_newlines=True)
 out = proc.communicate(script)[0]
-

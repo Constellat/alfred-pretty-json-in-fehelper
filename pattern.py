@@ -29,6 +29,9 @@ out_string = re.sub('(?<=:)False(?=(\s*[,}]))', '"False"', out_string)
 out_string = re.sub('(?<=:\s)False(?=(\s*[,}]))', '"False"', out_string)
 out_string = re.sub('(?<=:)True(?=(\s*[,}]))', '"True"', out_string)
 out_string = re.sub('(?<=:\s)True(?=(\s*[,}]))', '"True"', out_string)
+out_string = re.sub('(?<=:)"""', '"', out_string)
+out_string = re.sub('(?<=:\s)"""', '"', out_string)
+out_string = re.sub('"""(?=(\s*[,}]))', '"', out_string)
 # 处理时间常见的datetime
 datetime_pattern_list = re.findall('(?<=:\s)datetime\.datetime\(([\d, ]*)\)(?=(\s*[,}]))', out_string)
 for _datetime_pattern, _ in datetime_pattern_list:

@@ -32,7 +32,7 @@ out_string = re.sub('(?<=:\s)True(?=(\s*[,}]))', '"True"', out_string)
 out_string = re.sub('(?<=:)"""', '"', out_string)
 out_string = re.sub('(?<=:\s)"""', '"', out_string)
 out_string = re.sub('"""(?=(\s*[,}]))', '"', out_string)
-# 处理时间常见的datetime
+# 处理时间常见的datetime.datetime
 datetime_pattern_list = re.findall('(?<=:\s)datetime\.datetime\(([\d, ]*)\)(?=(\s*[,}]))', out_string)
 for _datetime_pattern, _ in datetime_pattern_list:
     datetime_list = _datetime_pattern.split(', ')
@@ -42,6 +42,16 @@ for _datetime_pattern, _ in datetime_pattern_list:
     time_str = ':'.join(time_list)
     datetime_str = '"' + date_str + " " + time_str + '"'
     out_string = re.sub(f'(?<=:\s)datetime\.datetime\({_datetime_pattern}\)(?=(\s*[,' + '}]))',
+                        datetime_str,
+                        out_string)
+# 处理时间常见的datetime.date
+datetime_pattern_list = re.findall('(?<=:\s)datetime\.date\(([\d, ]*)\)(?=(\s*[,}]))', out_string)
+for _datetime_pattern, _ in datetime_pattern_list:
+    datetime_list = _datetime_pattern.split(', ')
+    date_list = list(map(lambda _: str(_) if int(_) > 9 else '0' + str(_), datetime_list))
+    date_str = '-'.join(date_list)
+    datetime_str = '"' + date_str + '"'
+    out_string = re.sub(f'(?<=:\s)datetime\.date\({_datetime_pattern}\)(?=(\s*[,' + '}]))',
                         datetime_str,
                         out_string)
 
